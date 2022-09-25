@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.bm-list-page {
+  &__header {
+    align-items: center;
+    display: flex;
+    height: 48px;
+    margin-top: 12px;
+    width: 100%;
+  }
+}

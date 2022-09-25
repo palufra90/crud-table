@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "crud-table": "apps/crud-table",
-    "crud-table-e2e": "apps/crud-table-e2e"
+    "crud-table-e2e": "apps/crud-table-e2e",
+    "feature-crud": "libs/feature-crud"
   }
 }
