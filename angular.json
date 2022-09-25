@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "crud-table": "apps/crud-table",
+    "crud-table-e2e": "apps/crud-table-e2e"
+  }
+}
