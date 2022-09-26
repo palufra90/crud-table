@@ -50,6 +50,15 @@ export const fruitReducer = createReducer(
   on(act.deleteFruitRequest, (state, action) => ({
     ...adapter.removeOne(action.fruit.id as number, state),
     loading: false,
+  })),
+  on(act.editFruitRequest, (state, action) => ({
+    ...adapter.upsertOne(
+      {
+        ...action.fruit,
+        id: action.fruit.id || state.ids.length,
+      },
+      state
+    ),
   }))
 );
 

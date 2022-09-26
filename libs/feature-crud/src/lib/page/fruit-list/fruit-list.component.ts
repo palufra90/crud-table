@@ -56,7 +56,7 @@ export class FruitListComponent implements OnInit {
     this._store.dispatch(act.deleteFruitRequest({ fruit }));
   }
 
-  onEdit(fruit: FruitSchema) {
+  onEdit(fruit?: FruitSchema) {
     const dialogRef = this._dialog.open(FruitDetailDialogComponent, {
       data: fruit,
       height: '31em',
@@ -68,9 +68,13 @@ export class FruitListComponent implements OnInit {
       .subscribe({
         next: (fruit) => {
           if (fruit) {
-            console.log(fruit);
+            this._store.dispatch(act.editFruitRequest({ fruit }));
           }
         },
       });
+  }
+
+  onAddFruit() {
+    this.onEdit();
   }
 }

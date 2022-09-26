@@ -32,7 +32,9 @@ export class FruitTableComponent {
   displayedColumns: string[] = ['name', 'genus', 'family', 'order', 'actions'];
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    if (this.dataSource) {
+      this.dataSource.sort = this.sort;
+    }
   }
 
   onSortChanged(sortState: Sort) {
@@ -40,5 +42,10 @@ export class FruitTableComponent {
       actualFruits: this.dataSource.data,
       ...sortState,
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

@@ -1,4 +1,4 @@
-## @
+# Data access
 
 This module has been generated with openapi-generator for angular, starting from a swagger api definition file ([api-def.yaml]).
 

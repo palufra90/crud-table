@@ -1,3 +1,16 @@
+<mat-form-field appearance="standard" style="padding-left: 24px">
+  <mat-label>Search fruit</mat-label>
+  <input
+    aria-label="filter fruits by any field"
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Ex. Banana"
+    #input
+  />
+</mat-form-field>
+
+<mat-divider></mat-divider>
+
 <table
   mat-table
   [dataSource]="dataSource"
@@ -35,10 +48,18 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef class="table-cell"></th>
     <td mat-cell *matCellDef="let row" class="table-cell">
-      <button mat-icon-button (click)="delete.emit(row)">
+      <button
+        mat-icon-button
+        (click)="delete.emit(row)"
+        matTooltip="Delete this fruit"
+      >
         <i class="fas fa-trash" aria-label="Delete this fruit"></i>
       </button>
-      <button mat-icon-button (click)="edit.emit(row)">
+      <button
+        mat-icon-button
+        (click)="edit.emit(row)"
+        matTooltip="Edit this fruit"
+      >
         <i class="fas fa-edit" aria-label="Edit this fruit"></i>
       </button>
     </td>

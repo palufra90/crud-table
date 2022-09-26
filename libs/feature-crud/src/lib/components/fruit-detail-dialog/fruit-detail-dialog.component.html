@@ -1,4 +1,4 @@
-<h6 mat-dialog-title>Edit Fruit</h6>
+<h6 mat-dialog-title>{{ titleDialog }}</h6>
 <div mat-dialog-content style="height: 20.5em">
   <form [formGroup]="fruitForm">
     <div class="form-group">
@@ -48,9 +48,7 @@
     color="primary"
     type="button"
     [mat-dialog-close]="false"
-    i18n="
-      Cancel|Button to close the
-      modal@@manage-subscription-modal.component.btn-cancel"
+    i18n="Cancel|Button to close the modal@@fruit-modal.component.btn-cancel"
   >
     Cancel
   </button>
@@ -59,9 +57,7 @@
     color="primary"
     type="button"
     [mat-dialog-close]="fruitForm.value"
-    i18n="
-      Continue|Button to continue managing
-      subscriptions@@continue-manage-subscription-modal.component.btn-understand"
+    i18n="Save|Button to save fruit@@fruit-modal.component.btn-understand"
   >
     Save
   </button>

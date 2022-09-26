@@ -40,3 +40,17 @@ export const deleteFruitRequest = createAction(
     fruit: FruitSchema;
   }>()
 );
+
+export const editFruitRequest = createAction(
+  '[Fruit] Edit fruit request',
+  props<{
+    fruit: FruitSchema;
+  }>()
+);
+
+export const editFruitRequestDone = createAction(
+  '[Fruit] Edit fruit request done',
+  props<{
+    fruit: FruitSchema;
+  }>()
+);

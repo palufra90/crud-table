@@ -15,7 +15,9 @@ export class FruitDetailDialogComponent {
     genus: new FormControl(),
     family: new FormControl(),
     order: new FormControl(),
+    id: new FormControl(),
   });
+  titleDialog = 'Edit fruit';
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -23,5 +25,8 @@ export class FruitDetailDialogComponent {
   ) {
     this.fruit = data;
     this.fruitForm.patchValue(data);
+    if (!data) {
+      this.titleDialog = 'Add a new fruit';
+    }
   }
 }

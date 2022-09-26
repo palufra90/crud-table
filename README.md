@@ -4,13 +4,23 @@ This project was generated using [Nx](https://nx.dev).
 
 ## Description
 
-Angular single web page that visualize a table after calling a public api.
+Angular single web page that visualizes a table after calling a public api.
 This application uses the [angular material](https://material.angular.io/) components.
+
+The elements in the table can be deleted or visualized on a separate modal and updated.
+
+A new item can be created, with the same modal.
+
+The table is sortable and can be filtered, using the behaviors provided by the material table.
+
+the changes to the fruits (sorting, adding, removing or editing an item) are managed with a ngrx state.
 
 ## Public api details
 
-Public api used: https://www.fruityvice.com/
+Public api used: https://www.fruityvice.com/.
+
 Documentation swagger file written following the openapi version 3 specification.
+
 To test the OpenAPI linting run:
 
 ```
@@ -23,6 +33,8 @@ Dependencies required:
 - openapi-generator-cli version 4.3.1
 
 [Openapi generator](https://openapi-generator.tech/docs/generators/typescript-angular) it's a valid tool to define in an independent service that configures and uses the HttpClient to perform api calls, leaving less space to errors.
+
+The api is used just for retrieving the data. In case of an api that permits update creation and delete, the api definition can be updated with the new endpoints, and the instruction to generate the module rerun. See details in [data access module README.md](libs/data-access-fruits/src/lib/README.md)
 
 ## Quick Start & Documentation
 
@@ -102,15 +114,3 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
