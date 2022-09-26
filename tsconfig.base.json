@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@test/data-access-fruits": ["libs/data-access-fruits/src/index.ts"],
       "@test/feature-crud": ["libs/feature-crud/src/index.ts"]
     }
   },

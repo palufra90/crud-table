@@ -1,12 +1,28 @@
-
-
 # Test
 
 This project was generated using [Nx](https://nx.dev).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+## Description
 
-🔎 **Smart, Fast and Extensible Build System**
+Angular single web page that visualize a table after calling a public api.
+This application uses the [angular material](https://material.angular.io/) components.
+
+## Public api details
+
+Public api used: https://www.fruityvice.com/
+Documentation swagger file written following the openapi version 3 specification.
+To test the OpenAPI linting run:
+
+```
+swagger-cli validate api-def.yaml
+```
+
+Dependencies required:
+
+- swagger-cli for linting
+- openapi-generator-cli version 4.3.1
+
+[Openapi generator](https://openapi-generator.tech/docs/generators/typescript-angular) it's a valid tool to define in an independent service that configures and uses the HttpClient to perform api calls, leaving less space to errors.
 
 ## Quick Start & Documentation
 
@@ -86,11 +102,6 @@ Run `nx graph` to see a diagram of the dependencies of your projects.
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
 
 ## ☁ Nx Cloud
 

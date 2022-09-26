@@ -1,11 +1,11 @@
 import { createAction, props } from '@ngrx/store';
-import { Fruit } from './fruits.reducers';
+import { FruitSchema } from '@test/data-access-fruits';
 
 export const fetchFruitsRequest = createAction('[Fruit] Fetch fruits request');
 export const fetchFruitsRequestDone = createAction(
   '[Fruit] Fetch fruits request done',
   props<{
-    fruits: Fruit[];
+    fruits: FruitSchema[];
   }>()
 );
 export const fetchFruitsRequestError = createAction(

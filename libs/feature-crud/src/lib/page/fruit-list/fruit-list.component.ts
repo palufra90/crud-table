@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  fruit: string;
-}
+import { Store } from '@ngrx/store';
+import { FruitSchema } from '@test/data-access-fruits';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { fetchFruitsRequest } from '../../store/fruits.actions';
+import { selectAllFruits } from '../../store/fruits.reducers';
 
 @Component({
   selector: 'pl-fruit-list',
@@ -13,12 +12,21 @@ export interface UserData {
   styleUrls: ['./fruit-list.component.scss'],
 })
 export class FruitListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource: MatTableDataSource<UserData>;
-  constructor() {
-    const users = [{ id: '1', name: 'Rosa', progress: '200', fruit: 'apple' }];
-    this.dataSource = new MatTableDataSource(users);
-  }
+  fruits$!: Observable<FruitSchema[]>;
+  onDestroySubject = new Subject<void>();
+  dataSource$ = new BehaviorSubject<MatTableDataSource<FruitSchema>>(
+    new MatTableDataSource<FruitSchema>([])
+  );
 
-  ngOnInit(): void {}
+  constructor(private _store: Store) {}
+
+  ngOnInit(): void {
+    this._store.dispatch(fetchFruitsRequest());
+    this.fruits$ = this._store.select(selectAllFruits);
+    this.fruits$.subscribe({
+      next: (fruits) => {
+        this.dataSource$.next(new MatTableDataSource(fruits));
+      },
+    });
+  }
 }

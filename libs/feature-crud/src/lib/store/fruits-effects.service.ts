@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import * as act from './fruits.actions';
-import { HttpClient } from '@angular/common/http';
-import { catchError, concatMap, map } from 'rxjs/operators';
-import { Fruit } from './fruits.reducers';
+import { FruitDatabaseService, FruitSchema } from '@test/data-access-fruits';
 import { of } from 'rxjs';
+import { catchError, concatMap, map } from 'rxjs/operators';
+import * as act from './fruits.actions';
 
 @Injectable()
 export class FruitsEffectsService {
-  constructor(private act$: Actions, private httpClient: HttpClient) {}
+  constructor(
+    private act$: Actions,
+    private fruitService: FruitDatabaseService
+  ) {}
 
   fetchFruits$ = createEffect(() =>
     this.act$.pipe(
       ofType(act.fetchFruitsRequest),
       concatMap(() => {
-        return this.httpClient.get('www.fruityvice.com/api/fruit/all').pipe(
+        return this.fruitService.apiFruitAllGet().pipe(
           map((response) => {
-            return act.fetchFruitsRequestDone({ fruits: response as Fruit[] });
+            const res = response.filter((fruit) => !!fruit.genus);
+            return act.fetchFruitsRequestDone({
+              fruits: res as FruitSchema[],
+            });
           }),
           catchError((err) => {
             return of(act.fetchFruitsRequestError({ error: err }));

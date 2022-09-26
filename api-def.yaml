@@ -1,0 +1,71 @@
+openapi: 3.0.2
+info:
+  description: Random api that returns fruits
+  title: Fruit Database api
+  version: 1.0.0
+tags:
+  - name: FruitDatabase
+servers:
+  - url: https://www.fruityvice.com
+paths:
+  /api/fruit/all:
+    get:
+      tags:
+        - FruitDatabase
+      responses:
+        200:
+          description: A list of all the fruits in the database
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FruitSchema'
+  /api/fruit/{id}:
+    parameters:
+      - $ref: '#/components/parameters/fruitId'
+    get:
+      tags:
+        - FruitDatabase
+      responses:
+        200:
+          description: the correspondent fruit in the database
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FruitSchema'
+components:
+  schemas:
+    FruitSchema:
+      properties:
+        id:
+          type: integer
+          example: 1
+        genus:
+          type: string
+        name:
+          type: string
+        family:
+          type: string
+        order:
+          type: string
+        nutritions:
+          type: object
+          properties:
+            carbohydrates:
+              type: number
+            protein:
+              type: number
+            fat:
+              type: number
+            calories:
+              type: number
+            sugar:
+              type: number
+  parameters:
+    fruitId:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: integer

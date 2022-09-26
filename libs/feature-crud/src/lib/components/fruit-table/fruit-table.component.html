@@ -1,0 +1,24 @@
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="genus">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Genus</th>
+    <td mat-cell *matCellDef="let row">{{ row.genus }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="family">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Family</th>
+    <td mat-cell *matCellDef="let row">{{ row.family }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="order">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Order</th>
+    <td mat-cell *matCellDef="let row">{{ row.order }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

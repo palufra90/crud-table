@@ -4,6 +4,7 @@
   "projects": {
     "crud-table": "apps/crud-table",
     "crud-table-e2e": "apps/crud-table-e2e",
+    "data-access-fruits": "libs/data-access-fruits",
     "feature-crud": "libs/feature-crud"
   }
 }
