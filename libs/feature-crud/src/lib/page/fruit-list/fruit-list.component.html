@@ -1,7 +1,12 @@
 <header class="bm-list-page__header">
-  <h5>Fruits</h5>
+  <h1>Fruits</h1>
 </header>
 
 <div class="mat-elevation-z8">
-  <pl-fruit-table [dataSource]="dataSource$.value"></pl-fruit-table>
+  <my-fruit-table
+    [dataSource]="dataSource$.value"
+    (delete)="onDelete($event)"
+    (edit)="onEdit($event)"
+    (sortChanged)="onSortChanged($event)"
+  ></my-fruit-table>
 </div>

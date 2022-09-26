@@ -35,3 +35,5 @@ $custom-typography: mat-typography-config(
 
 @include mat-core-theme($my-theme);
 @include mat-table-theme($my-theme);
+@include mat-dialog-theme($my-theme);
+@include mat-button-theme($my-theme);

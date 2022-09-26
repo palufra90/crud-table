@@ -1,3 +1,4 @@
+import { SortDirection } from '@angular/material/sort';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import {
   Action,
@@ -7,14 +8,19 @@ import {
   on,
 } from '@ngrx/store';
 import { FruitSchema } from '@test/data-access-fruits';
+import { SortItemsUtilService } from '@test/shared-utils';
 
 import * as act from './fruits.actions';
 
 export interface FruitState extends EntityState<FruitSchema> {
-  loading: Boolean;
+  loading: boolean;
+  sortActive?: string;
+  sortDirection?: SortDirection;
 }
 
 export const adapter = createEntityAdapter<FruitSchema>({});
+
+export const sortService = SortItemsUtilService;
 
 export function reducer(state: FruitState, action: Action) {
   return fruitReducer(state, action);
@@ -31,8 +37,18 @@ export const fruitReducer = createReducer(
     ...state,
     loading: true,
   })),
-  on(act.fetchFruitsRequestDone, (state, action) => ({
+  on(act.fetchFruitsRequestDone, act.sortFruitRequestDone, (state, action) => ({
     ...adapter.setAll(action.fruits, state),
+    loading: false,
+  })),
+  on(act.sortFruitRequest, (state, action) => ({
+    ...state,
+    loading: true,
+    sortActive: action.active,
+    sortDirection: action.direction,
+  })),
+  on(act.deleteFruitRequest, (state, action) => ({
+    ...adapter.removeOne(action.fruit.id as number, state),
     loading: false,
   }))
 );

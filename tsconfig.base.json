@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@test/data-access-fruits": ["libs/data-access-fruits/src/index.ts"],
-      "@test/feature-crud": ["libs/feature-crud/src/index.ts"]
+      "@test/feature-crud": ["libs/feature-crud/src/index.ts"],
+      "@test/shared-utils": ["libs/shared-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

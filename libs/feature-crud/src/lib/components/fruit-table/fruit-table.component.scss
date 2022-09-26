@@ -9,5 +9,19 @@ table {
 
 td,
 th {
-  width: 25%;
+  width: 20%;
+}
+
+.table-row {
+  height: 4em;
+  &:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  &--active,
+  &:hover {
+    background-color: #ebf0ff;
+  }
+}
+.table-cell {
+  border: none !important;
 }

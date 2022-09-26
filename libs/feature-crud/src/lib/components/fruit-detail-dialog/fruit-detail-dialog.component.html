@@ -1,0 +1,68 @@
+<h6 mat-dialog-title>Edit Fruit</h6>
+<div mat-dialog-content style="height: 20.5em">
+  <form [formGroup]="fruitForm">
+    <div class="form-group">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="fruit_form_name">Name</mat-label>
+        <input
+          matInput
+          id="fruit_form_name"
+          type="text"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="fruit_form_genus">Genus</mat-label>
+        <input
+          matInput
+          id="fruit_form_genus"
+          type="text"
+          formControlName="genus"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="fruit_form_family">Family</mat-label>
+        <input
+          matInput
+          id="fruit_form_family"
+          type="text"
+          formControlName="family"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="fruit_form_order">Order</mat-label>
+        <input
+          matInput
+          id="fruit_form_order"
+          type="text"
+          formControlName="order"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<footer mat-dialog-actions align="end" class="sticky-footer">
+  <button
+    mat-stroked-button
+    class="bm-cancel-button"
+    color="primary"
+    type="button"
+    [mat-dialog-close]="false"
+    i18n="
+      Cancel|Button to close the
+      modal@@manage-subscription-modal.component.btn-cancel"
+  >
+    Cancel
+  </button>
+  <button
+    mat-flat-button
+    color="primary"
+    type="button"
+    [mat-dialog-close]="fruitForm.value"
+    i18n="
+      Continue|Button to continue managing
+      subscriptions@@continue-manage-subscription-modal.component.btn-understand"
+  >
+    Save
+  </button>
+</footer>

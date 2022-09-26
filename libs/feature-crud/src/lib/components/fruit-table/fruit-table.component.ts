@@ -1,15 +1,17 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
+  Output,
   ViewChild,
 } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort, SortDirection } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { FruitSchema } from '@test/data-access-fruits';
 
 @Component({
-  selector: 'pl-fruit-table',
+  selector: 'my-fruit-table',
   templateUrl: './fruit-table.component.html',
   styleUrls: ['./fruit-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,18 +19,26 @@ import { FruitSchema } from '@test/data-access-fruits';
 export class FruitTableComponent {
   @Input() dataSource!: MatTableDataSource<FruitSchema>;
 
-  @ViewChild(MatSort) sort?: MatSort;
+  @Output() delete = new EventEmitter<FruitSchema>();
+  @Output() edit = new EventEmitter<FruitSchema>();
+  @Output() sortChanged = new EventEmitter<{
+    actualFruits: FruitSchema[];
+    active: string;
+    direction: SortDirection;
+  }>();
 
-  displayedColumns: Array<keyof FruitSchema> = [
-    'name',
-    'genus',
-    'family',
-    'order',
-  ];
+  @ViewChild(MatSort) sort!: MatSort;
+
+  displayedColumns: string[] = ['name', 'genus', 'family', 'order', 'actions'];
 
   ngAfterViewInit() {
-    if (this.sort) {
-      this.dataSource.sort = this.sort;
-    }
+    this.dataSource.sort = this.sort;
+  }
+
+  onSortChanged(sortState: Sort) {
+    this.sortChanged.emit({
+      actualFruits: this.dataSource.data,
+      ...sortState,
+    });
   }
 }
