@@ -13,7 +13,16 @@ A new item can be created, with the same modal.
 
 The table is sortable and can be filtered, using the behaviors provided by the material table.
 
-the changes to the fruits (sorting, adding, removing or editing an item) are managed with a ngrx state.
+The changes to the fruits (sorting, adding, removing or editing an item) are managed with a ngrx state.
+
+## How to run
+
+The dependencies are installed with npm, so to run it locally just execute
+`npm install`
+and 
+`ng serve`.
+
+Node version: 14.18.3 (should work with node 16 as well).
 
 ## Public api details
 
@@ -101,11 +110,15 @@ Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `nx affected:test` to execute the unit tests affected by a change.
 
+There are just a couple of meaningful unit tests, since it wasn't an explicit requirement.
+
 ## Running end-to-end tests
 
 Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
 Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+
+There are no end-to-end test.
 
 ## Understand your workspace
 
